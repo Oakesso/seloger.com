@@ -4,7 +4,6 @@
 #-----------------------------------------------------------------------------#
 #                            Import Librairies                                #
 #-----------------------------------------------------------------------------#
-
 from BeautifulSoup import BeautifulSoup
 import pycurl
 from StringIO import StringIO
@@ -18,7 +17,6 @@ import random
 #-----------------------------------------------------------------------------#
 #                          creation des dosssiers                             #
 #-----------------------------------------------------------------------------#
-
 def create_path() :
     print "Verifying internal paths", "\n"
     path_list = ["errors/", "log/", "loginit/"]    
@@ -33,7 +31,6 @@ def create_path() :
 #-----------------------------------------------------------------------------#
 #                               dispatch                                      #
 #-----------------------------------------------------------------------------#
-
 def dispatch(textfilename, listename, ratio=100) :
     print "#-----------------------------------------------------------------#"
     print "dispatch des liens en sous listes"
@@ -73,7 +70,6 @@ def dispatch(textfilename, listename, ratio=100) :
 #-----------------------------------------------------------------------------#
 #                                 Curl                                        #
 #-----------------------------------------------------------------------------#
-
 def curl(url) :
     m = pycurl.CurlMulti()
     m.handles = []
@@ -122,7 +118,6 @@ def curl(url) :
 #-----------------------------------------------------------------------------#
 #              Recuperation des donnees qui contient l ip adress              #
 #-----------------------------------------------------------------------------#
-
 def read_ipadress(path_log="loginit/") :
     ip_url = ["http://www.my-ip-address.net", "http://www.mon-ip.com",
               "http://www.adresseip.com", "http://my-ip.heroku.com",
