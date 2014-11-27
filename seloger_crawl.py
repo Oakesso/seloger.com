@@ -15,7 +15,7 @@ import os
 import random
 
 #-----------------------------------------------------------------------------#
-#                          creation des dosssiers                             #
+#                          create folder(s)                                   #
 #-----------------------------------------------------------------------------#
 def create_path() :
     print "Verifying internal paths", "\n"
@@ -116,7 +116,7 @@ def curl(url) :
     return m.handles
 
 #-----------------------------------------------------------------------------#
-#              Recuperation des donnees qui contient l ip adress              #
+#                         GET IP ADRESS FROM WEBSITES                         #
 #-----------------------------------------------------------------------------#
 def read_ipadress(path_log="loginit/") :
     ip_url = ["http://www.my-ip-address.net", "http://www.mon-ip.com",
@@ -233,31 +233,24 @@ def try_read_ipadress() :
     try :
         print read_ipadress()
     except :
-        #---------------------------------------------------------------------#
-        #                    first launch of read_ipadress                    #
-        #---------------------------------------------------------------------#
         print "1st time read_ipadress failed to launch"
         print "re start 1 read_ipadress"
         print "\n"
         try :
             print read_ipadress()
         except :
-            #-----------------------------------------------------------------#
-            #               second launch of read_ipadress                    #
-            #-----------------------------------------------------------------#
             print "2nd time read_ipadress failed to launch"
             print "re start 2 read_ipadress"
             print "\n"   
             try :
                 print read_ipadress()
             except :
-                #-------------------------------------------------------------#
-                #                   third launch of read_ipadress             #
-                #-------------------------------------------------------------#
+
                 print "3rd time read_ipadress failed to launch"
                 print "re start 3 read_ipadress"
                 print "\n"
-                print read_ipadress()    
+                print read_ipadress() 
+                
 #-----------------------------------------------------------------------------#
 #                          Re-new the ip adress                               #
 #-----------------------------------------------------------------------------#
@@ -269,96 +262,7 @@ def oldnew_ipadress(ip_adress=read_ipadress()) :
     try_read_ipadress()
     print "\n"
 #dev : securite aller chercher l adresse ip de retour sur un autre site
-    
-#-----------------------------------------------------------------------------#
-#        Recuperation des urls pour chacunes pages qui contient               # 
-#                      les vers les urls des villes.                          #
-#-----------------------------------------------------------------------------#
 
-#def function_1(path_log="loginit/") :
-#
-#    #on lance la fonction create_path avant afin de verifier si tous les 
-#    #dossier necessaire a l execution du programme existent sinon on les 
-#    #crees.
-#
-#    create_path()    
-#    
-#    #cette url permet d'acceder à l'ensemble de la page de départ du site
-#    #sur laquelle se trouve la majorité des liens qui pourront nous interesser
-#    #par la suite.
-#
-#    url = ["http://www.seloger.com/immobilier/tout/immo-paris-75/"]
-#
-#    pool = curl(url)
-#
-#    #nous renouvellons l adresse ip:
-#        
-#    oldnew_ipadress() 
-#    
-#    #on ouvre un fichier en ecriture afin d y sauver des donnees :
-#        
-#    backup_file1 = open(path_log + "backup_file1.txt", "w")
-#    
-#    for c in pool :
-#        
-#        #on recupere les url qui n ont pas fonctionner lors du proccessus :
-#                
-#        data = c.body.getvalue()
-#        
-#        #utilisation de BeautifulSoup
-#        #on met dans BeautifulSoup le contenu de la page web
-#
-#        soup1 = BeautifulSoup(data)
-#        
-#        #on recherche tous les liens du contenu dans le conteneur "li" 
-#        #dont la class = switch_style du css il y a d'autres liens dans 
-#        #les autres conteneur. on se place dans le css numero 1 "li" 
-#        #dont la class = "switch_style".
-#
-#        s1 = soup1.findAll('div', {'class' : 'content_infos'})
-#        s1 = s1[1].findAll('li')
-#        print "len(s1) : ", len(s1)
-#        print "\n"
-#        
-#        for i in range(len(s1)) : 
-#            
-#            url = s1[i].findAll('a')[0]['href']
-#            
-#            #on calcul le dernier element de la derniere partie separer par "/"
-#            #et contenant "immo-"
-#            
-#            len_url = len(url.split("/"))
-#            
-#            #on utilise len_url pour garder la partie ou le numero de 
-#            #departement est ecrit.
-#            
-#            len_departement = len(url.split("/")[len_url-2].split("-"))
-#            
-#            #on recupere ainsi le numero du departement en utilisant maintenant 
-#            #len_departement.
-#            
-#            departement = url.split("/")[len_url-2].split("-")[len_departement-1]
-#            
-#            #on recupere le nombre d annonce qui est un texte que l on recupere 
-#            #par la methode "string".
-#            
-#            nbr_annonce = s1[i].findAll('b')[0].string
-#            
-#            #on recupere le quartier a la aide du titre.
-#            
-#            quartier_niv1 = s1[i].findAll('a')[0]['title'].replace("Immobilier ", "")
-#
-#            print i, departement, nbr_annonce, quartier_niv1, url
-#            backup_file1.write(departement + ";" + nbr_annonce + ";" + quartier_niv1 + ";" + url + ";")
-#            backup_file1.write("\n")
-#            
-##            break
-#            
-#    #on ferme le fichier :
-#        
-#    backup_file1.close()
-#    print "\n"
-              
 #-----------------------------------------------------------------------------#
 #        Recuperation des urls des annonces pour chacun des liens             #
 #                            de types differents                              #
