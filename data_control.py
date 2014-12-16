@@ -15,7 +15,7 @@ def function_2(path_log, file_name="backup_file1.txt") :
     backup_file2 = open(path_log + "backup_file2.txt", "w")
     for url in url_liste :
         pool = curl(url)
-        oldnew_ipadress()
+#        oldnew_ipadress(path_log)
         for c in pool :
             data = c.body.getvalue()
             soup1 = BeautifulSoup(data)
@@ -123,7 +123,7 @@ def function_4(path_log, file_name="urls_parcours.txt") :
         for i in range(len(url)) :
             url_done.write(url[i] + "\n")
         pool = curl(url)
-        oldnew_ipadress()
+#        oldnew_ipadress(path_log)
         compteur1 = 0
         for c in pool :
             compteur1 += 1
