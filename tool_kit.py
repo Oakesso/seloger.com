@@ -18,20 +18,19 @@ path_log="loginit/"
 #                          create folder(s)                                   #
 #-----------------------------------------------------------------------------#
 def create_path() :
-    print "Verifying internal paths", "\n"
+    print "Verifying internal paths : "
     path_list = ["errors/", "log/", "loginit/"]    
     for i in path_list :        
         if os.path.exists(i) :
-            pass
+            print i, "OK"
         else :
-            print i, "... now Created"
+            print i, "KO", "... now %s created" % (i)
             os.mkdir(i)
-    print "\n"
 
 #-----------------------------------------------------------------------------#
 #                               dispatch                                      #
 #-----------------------------------------------------------------------------#
-def dispatch(textfilename, listename, ratio=100) :
+def dispatch(textfilename, listename, ratio=1) :
     print "#-----------------------------------------------------------------#"
     print "dispatch links in sub_lists"
     compteur0 = 0
@@ -210,7 +209,7 @@ def read_ipadress(path_log) :
 #-----------------------------------------------------------------------------#
 #with thid and thanks to the stem module you can controle the change of your ip
 #adress when this fonction bellow is called.
-def change_ipadress(passphrase="your_TOR_password", sleep=1) :
+def change_ipadress(passphrase="Femmes125", sleep=1) :
     with Controller.from_port(port = 9051) as controller:
         controller.authenticate(passphrase)
         controller.signal(Signal.NEWNYM)  
