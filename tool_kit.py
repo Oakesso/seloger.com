@@ -209,7 +209,7 @@ def read_ipadress(path_log) :
 #-----------------------------------------------------------------------------#
 #with thid and thanks to the stem module you can controle the change of your ip
 #adress when this fonction bellow is called.
-def change_ipadress(passphrase="Femmes125", sleep=1) :
+def change_ipadress(passphrase="your_TORsoftware_password", sleep=1) :
     with Controller.from_port(port = 9051) as controller:
         controller.authenticate(passphrase)
         controller.signal(Signal.NEWNYM)  
