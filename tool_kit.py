@@ -147,7 +147,6 @@ def read_ipadress(path_log) :
     # https://www.whatsmydns.net/whats-my-ip-address.html
     url = random.choice(ip_url)
     if url == "http://www.my-ip-address.net" :
-        print "url : ", url, "\n"
         pool = curl([url])
         for c in pool :
             data = c.body.getvalue()
@@ -155,22 +154,19 @@ def read_ipadress(path_log) :
             s1 = soup1.findAll('h2')[0].text
             s1 = s1.replace("IP Address :", "")
     elif url == "http://www.mon-ip.com" :
-        print "url : ", url, "\n"
         pool = curl([url])
         for c in pool :
             data = c.body.getvalue()
             soup1 = BeautifulSoup(data)
             s1 = soup1.findAll('span', {'class' : 'clip'})[0].text        
     elif url == "http://www.adresseip.com" :
-        print "url : ", url, "\n"
         pool = curl([url])
         for c in pool :
             data = c.body.getvalue()
             soup1 = BeautifulSoup(data)
             s1 = soup1.findAll('h2', {'class' : 'title'})[0].text
             s1 = s1.replace("Votre Adresse IP est :", "")
-    elif url == "http://www.whatsmyip.net" :
-        print "url : ", url, "\n"    
+    elif url == "http://www.whatsmyip.net" :   
         pool = curl([url])
         for c in pool :
             data = c.body.getvalue()
@@ -178,21 +174,18 @@ def read_ipadress(path_log) :
             s1 = soup1.findAll('h1', {'class' : 'ip'})[0]
             s1 = s1.findAll('input')[0]['value']
     elif url == "http://my-ip.heroku.com" :
-        print "url : ", url, "\n"
         pool = curl([url])
         for c in pool :
             data = c.body.getvalue()
             soup1 = BeautifulSoup(data)
             s1 = soup1.text        
     elif url == "http://www.geobytes.com/phpdemo.php" :
-        print "url : ", url, "\n"
         pool = curl([url])
         for c in pool :
             data = c.body.getvalue()
             soup1 = BeautifulSoup(data)
             s1 = soup1.findAll('b')[0].text      
     elif url == "http://checkip.dyndns.com" :
-        print "url : ", url, "\n"
         pool = curl([url])
         for c in pool :
             data = c.body.getvalue()
@@ -200,7 +193,6 @@ def read_ipadress(path_log) :
             s1 = soup1.text
             s1 = s1.replace("Current IP CheckCurrent IP Address: ", "")
     elif url == "http://www.myglobalip.com" :
-        print "url : ", url, "\n"
         pool = curl([url])
         for c in pool :
             data = c.body.getvalue()
@@ -218,7 +210,7 @@ def read_ipadress(path_log) :
 #-----------------------------------------------------------------------------#
 #with thid and thanks to the stem module you can controle the change of your ip
 #adress when this fonction bellow is called.
-def change_ipadress(passphrase="yourTORpassword", sleep=1) :
+def change_ipadress(passphrase="your_TOR_password", sleep=1) :
     with Controller.from_port(port = 9051) as controller:
         controller.authenticate(passphrase)
         controller.signal(Signal.NEWNYM)  
@@ -234,23 +226,17 @@ def try_read_ipadress(path_log) :
         print read_ipadress(path_log)
     except :
         print "#------------------------------------#"
-        print "1st time read_ipadress failed to launch"
-        print "re start 1 read_ipadress"
-        print "\n"
+        print "1st time read_ipadress failed to launch, re start n°1 read_ipadress"
         try :
             print read_ipadress(path_log)
         except :
             print "#------------------------------------#"
-            print "2nd time read_ipadress failed to launch"
-            print "re start 2 read_ipadress"
-            print "\n"   
+            print "2nd time read_ipadress failed to launch, re start n°2 read_ipadress"  
             try :
                 print read_ipadress(path_log)
             except :
                 print "#------------------------------------#"
-                print "3rd time read_ipadress failed to launch"
-                print "re start 3 read_ipadress"
-                print "\n"
+                print "3rd time read_ipadress failed to launch, re start n°3 read_ipadress"
                 print read_ipadress(path_log) 
                 
 #-----------------------------------------------------------------------------#
