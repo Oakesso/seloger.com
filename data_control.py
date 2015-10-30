@@ -1,5 +1,14 @@
 # -*- coding: utf-8 -*-
 
+#-----------------------------------------------------------------------------#
+#!!!!                                                                         #
+#                                                                             #
+#please note the code is not up to date. It may not work actually due to      #
+#change on the web site host from where data is extracted.                    #
+#                                                                             #
+#!!!!                                                                         #
+#-----------------------------------------------------------------------------#
+
 from tool_kit import path_log, create_path, dispatch, curl, oldnew_ipadress
 from bs4 import BeautifulSoup
 import time
