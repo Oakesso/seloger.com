@@ -1,4 +1,4 @@
-seloger.com
+seloger.com (2015)
 ===========
 
 Get Data from the Real Estate french website "seloger.com" for the Paris districts.
